@@ -1,0 +1,22 @@
+#root {
+  width: 263px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  height: 100vh;
+}
+
+.date {
+  color: var(--statuses-green);
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+.fsz-12 {
+  font-size: 12px;
+}
+.fsz-13 {
+  font-size: 13px;
+}

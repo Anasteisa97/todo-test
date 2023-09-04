@@ -1,0 +1,81 @@
+.task {
+  background-color: #F4F8FF;
+  border-radius: 7px;
+  padding: 4px;
+
+  &-inner {
+    display: grid;
+    row-gap: 8px;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 0 1px 2px #D0DAEB, 0 0 2px #EEF4FE;
+    background: #ffffff;
+  }
+
+  &-title {
+    input {
+      margin: 0 6px 0 0;
+    }
+    label {
+      color: var(--primary-blue);
+    }
+  }
+
+  &-dates {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    img {
+      position: absolute;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-tags {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 4px;
+    &__item {
+      font-weight: 600;
+      font-size: 12px;
+      padding: 1px 6px 2px;
+      border-radius: 4px;
+      height: 20px;
+      &_violet {
+        background-color: var(--statuses-entity);
+        color: #ffffff;
+      }
+      &_gray {
+        background-color: var(--neuteral-gray);
+        position: relative;
+        padding-right: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        margin-right: 12px;
+        &::after {
+          position: absolute;
+          left: 100%;
+          top: 0;
+          content: url("data:image/svg+xml,%3Csvg width='11' height='20' viewBox='0 0 11 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H2.0775C3.29264 0 4.44189 0.552359 5.20098 1.50122L10.001 7.50122C11.1697 8.96209 11.1697 11.0379 10.001 12.4988L5.20098 18.4988C4.44189 19.4476 3.29264 20 2.0775 20H0V0Z' fill='%23EBEEF6'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
+  }
+}
