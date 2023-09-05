@@ -4,7 +4,8 @@
   padding: 4px;
 
   &-inner {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     row-gap: 8px;
     padding: 10px;
     border-radius: 7px;
@@ -12,13 +13,27 @@
     background: #ffffff;
   }
 
-  &-title {
-    input {
-      margin: 0 6px 0 0;
-    }
-    label {
-      color: var(--primary-blue);
-    }
+  &-top {
+    position: relative;
+  }
+
+  &__checkbox {
+    top: 2px;
+    position: absolute;
+  }
+  &__title {
+    color: var(--primary-blue);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-indent: 24px;
+  }
+  &__descr {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &-dates {

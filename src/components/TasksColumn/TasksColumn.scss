@@ -1,4 +1,7 @@
 .tasks-col {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: 8px;
+  height: 90vh;
+  overflow-y: auto;
 }
