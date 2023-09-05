@@ -1,13 +1,17 @@
 import Avatar from "../../assets/avatar.jpg"
 import "./Task.scss"
+import {useState} from "react";
 
-const Task = () => {
+const Task = ({id, title, completed}) => {
+
+  const [checked, setChecked] = useState(completed);
+
   return (
     <article className="task">
       <div className="task-inner">
         <div className="task-title">
-          <input type="checkbox" id="task1"/>
-          <label htmlFor="task1" className="fw-bold">For the sacke of example we are a building company and we have just closed</label>
+          <input type="checkbox" id={`task${id}`} checked={checked} onChange={() => setChecked(!checked)}/>
+          <label htmlFor={`task${id}`} className="fw-bold">{title}</label>
         </div>
         <div>
           <div className="task-dates">
