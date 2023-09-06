@@ -6,6 +6,5 @@ const instance: AxiosInstance = axios.create({
 
 export const fetchTodos = async (page: number = 1) => {
     const response = await instance.get(`todos?_page=${page}`);
-    console.log(response.data);
     return await response.data;
 }
