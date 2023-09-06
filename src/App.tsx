@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <TopBar/>
+      <TopBar todosCount={todos.length}/>
       <TasksColumn todos={todos}/>
     </>
   )
