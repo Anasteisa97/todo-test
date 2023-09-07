@@ -1,9 +1,10 @@
 import Avatar from "../../assets/avatar.jpg"
 import "./Task.scss"
-import {FC} from "react";
+import {FC, useRef} from "react";
 import {faker} from "@faker-js/faker";
 import {getDateTemplate, getRandomStringEnum} from "../../utils";
 import {Development, TodoType} from "../../types";
+import {useIntersectionObserver} from "usehooks-ts";
 
 const Task: FC<TodoType> = ({id, title, completed}) => {
 
@@ -12,8 +13,14 @@ const Task: FC<TodoType> = ({id, title, completed}) => {
     startDate = faker.date.recent({ days: 10 }),
     endDate = faker.date.soon({ days: 10 })
 
+  const ref = useRef<HTMLDivElement | null>(null)
+  const entry = useIntersectionObserver(ref, {})
+  const isVisible = !!entry?.isIntersecting
+
+  console.log(`Render Section ${title}`, { isVisible })
+
   return (
-    <article className="task">
+    <article className="task" ref={ref}>
       <label htmlFor={`task${id}`}>
         <div className="task-inner">
           <div className="task-top">
