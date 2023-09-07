@@ -1,8 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import "./TopBar.scss"
 import addSvg from "../../assets/add.svg"
 
-const TopBar = ({todosCount}) => {
+type TopBarProps = {
+  todosCount: number
+}
+
+const TopBar: FC<TopBarProps> = ({todosCount}) => {
   return (
     <div className="top">
       <span className="date">Today</span>

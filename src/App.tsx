@@ -1,10 +1,10 @@
 import './App.css'
 import TopBar from "./components/TopBar/TopBar";
 import TasksColumn from "./components/TasksColumn/TasksColumn";
-import {useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {fetchTodos} from "./api/fetchTodos";
 
-function App() {
+function App() : FC {
 
   const [todos, setTodos] = useState([]);
 
