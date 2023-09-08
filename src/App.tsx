@@ -1,23 +1,25 @@
 import './App.css'
 import TopBar from "./components/TopBar/TopBar";
 import TasksColumn from "./components/TasksColumn/TasksColumn";
-import {FC, useEffect, useState} from "react";
-import {fetchTodos} from "./api/fetchTodos";
+import {FC, useEffect} from "react";
+import {observer} from "mobx-react-lite";
+import todos from "./store/todos";
 
-function App() : FC {
+const App : FC = observer (() => {
 
-  const [todos, setTodos] = useState([]);
+    //const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    fetchTodos().then(data => setTodos(data));
-  }, [])
+    useEffect(() => {
+      todos.fetchTodos();
+    }, [])
 
-  return (
-    <>
-      <TopBar todosCount={todos.length}/>
-      <TasksColumn todos={todos}/>
-    </>
-  )
-}
+    return (
+      <>
+        <TopBar/>
+        <TasksColumn/>
+      </>
+    )
+  }
+)
 
 export default App

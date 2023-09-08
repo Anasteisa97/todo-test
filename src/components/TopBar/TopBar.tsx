@@ -1,12 +1,10 @@
 import React, {FC} from "react";
 import "./TopBar.scss"
 import addSvg from "../../assets/add.svg"
+import todos from "../../store/todos";
+import {observer} from "mobx-react-lite";
 
-type TopBarProps = {
-  todosCount: number
-}
-
-const TopBar: FC<TopBarProps> = ({todosCount}) => {
+const TopBar: FC = observer(() => {
   return (
     <div className="top">
       <span className="date">Today</span>
@@ -14,10 +12,10 @@ const TopBar: FC<TopBarProps> = ({todosCount}) => {
         <button className="top-add">
           <img src={addSvg} alt='' />
         </button>
-        <span className="top-count fsz-12">{todosCount}</span>
+        <span className="top-count fsz-12">{todos.todos.length}</span>
       </div>
     </div>
   )
-}
+})
 
 export default TopBar

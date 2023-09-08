@@ -14,7 +14,9 @@ const Task: FC<TodoType> = ({id, title, completed}) => {
     endDate = faker.date.soon({ days: 10 })
 
   const ref = useRef<HTMLDivElement | null>(null)
-  const entry = useIntersectionObserver(ref, {})
+  const entry = useIntersectionObserver(ref, {
+    freezeOnceVisible: true
+  })
   const isVisible = !!entry?.isIntersecting
 
   console.log(`Render Section ${title}`, { isVisible })

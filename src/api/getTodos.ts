@@ -4,7 +4,7 @@ const instance: AxiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com/',
 })
 
-export const fetchTodos = async (page: number = 1) => {
+export const getTodos = async (page: number = 1) => {
     const response = await instance.get(`todos?_page=${page}`);
     return await response.data;
 }
