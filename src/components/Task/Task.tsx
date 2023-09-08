@@ -5,8 +5,10 @@ import {faker} from "@faker-js/faker";
 import {getDateTemplate, getRandomStringEnum} from "../../utils";
 import {Development, TodoType} from "../../types";
 import {useIntersectionObserver} from "usehooks-ts";
+import {observer} from "mobx-react-lite";
+import todos from "../../store/todos";
 
-const Task: FC<TodoType> = ({id, title, completed}) => {
+const Task: FC<TodoType> = observer(({id, title, completed}) => {
 
   const description = faker.lorem.paragraph(),
     tag = faker.word.words({ count: { min: 1, max: 2 } }),
@@ -19,7 +21,10 @@ const Task: FC<TodoType> = ({id, title, completed}) => {
   })
   const isVisible = !!entry?.isIntersecting
 
-  console.log(`Render Section ${title}`, { isVisible })
+  //console.log(`Render Section ${title}`, { isVisible })
+  if ((id === 10) && isVisible) {
+    todos.fetchTodos(2)
+  }
 
   return (
     <article className="task" ref={ref}>
@@ -58,6 +63,6 @@ const Task: FC<TodoType> = ({id, title, completed}) => {
       </label>
     </article>
   )
-}
+})
 
 export default Task

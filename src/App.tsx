@@ -11,6 +11,7 @@ const App : FC = observer (() => {
 
     useEffect(() => {
       todos.fetchTodos();
+      console.log('init')
     }, [])
 
     return (

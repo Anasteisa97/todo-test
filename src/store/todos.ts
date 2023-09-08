@@ -1,21 +1,18 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, observable, runInAction} from "mobx";
 import {getTodos} from "../api/getTodos";
 
 class Todos {
   todos = [];
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {todos:observable, fetchTodos:action})
   }
 
-  fetchTodos(page) {
-    getTodos(page)
-      .then(data => {
-        //this.todos = [...this.todos, ...data]
-        if (!this.todos.length) {
-          this.todos = [...data]
-        }
-      });
+  fetchTodos = async (page) => {
+    const data = await getTodos(page);
+    runInAction(() => {
+      this.todos = [...this.todos, ...data]
+    })
   }
 }
 
