@@ -1,6 +1,6 @@
 import Avatar from "../../assets/avatar.jpg"
 import "./Task.scss"
-import {FC, useRef} from "react";
+import {FC, MutableRefObject, useRef} from "react";
 import {faker} from "@faker-js/faker";
 import {getDateTemplate, getRandomStringEnum} from "../../utils";
 import {Development, TodoType} from "../../types";
@@ -14,16 +14,16 @@ type TaskProps = TodoType & {
 
 const Task: FC<TaskProps> = observer(({id, title, completed, isLast}) => {
 
-  const description = faker.lorem.paragraph(),
-    tag = faker.word.words({ count: { min: 1, max: 2 } }),
-    startDate = faker.date.recent({ days: 10 }),
-    endDate = faker.date.soon({ days: 10 })
+  const description: string = faker.lorem.paragraph(),
+    tag: string = faker.word.words({ count: { min: 1, max: 2 } }),
+    startDate: Date = faker.date.recent({ days: 10 }),
+    endDate: Date = faker.date.soon({ days: 10 })
 
-  const ref = useRef<HTMLDivElement | null>(null)
-  const entry = useIntersectionObserver(ref, {
+  const ref: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null)
+  const entry: IntersectionObserverEntry | undefined = useIntersectionObserver(ref, {
     freezeOnceVisible: true
   })
-  const isVisible = !!entry?.isIntersecting
+  const isVisible: boolean = !!entry?.isIntersecting
 
   if (isLast && isVisible) {
     todos.fetchTodos();

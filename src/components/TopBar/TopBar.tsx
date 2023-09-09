@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import "./TopBar.scss"
 import addSvg from "../../assets/add.svg"
 import todos from "../../store/todos";
