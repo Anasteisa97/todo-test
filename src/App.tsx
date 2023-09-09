@@ -7,11 +7,8 @@ import todos from "./store/todos";
 
 const App : FC = observer (() => {
 
-    //const [todos, setTodos] = useState([]);
-
     useEffect(() => {
       todos.fetchTodos();
-      console.log('init')
     }, [])
 
     return (

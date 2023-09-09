@@ -8,7 +8,11 @@ import {useIntersectionObserver} from "usehooks-ts";
 import {observer} from "mobx-react-lite";
 import todos from "../../store/todos";
 
-const Task: FC<TodoType> = observer(({id, title, completed}) => {
+type TaskProps = TodoType & {
+  isLast: boolean
+}
+
+const Task: FC<TaskProps> = observer(({id, title, completed, isLast}) => {
 
   const description = faker.lorem.paragraph(),
     tag = faker.word.words({ count: { min: 1, max: 2 } }),
@@ -21,9 +25,8 @@ const Task: FC<TodoType> = observer(({id, title, completed}) => {
   })
   const isVisible = !!entry?.isIntersecting
 
-  //console.log(`Render Section ${title}`, { isVisible })
-  if ((id === 10) && isVisible) {
-    todos.fetchTodos(2)
+  if (isLast && isVisible) {
+    todos.fetchTodos();
   }
 
   return (

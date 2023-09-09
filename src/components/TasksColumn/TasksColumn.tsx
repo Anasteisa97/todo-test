@@ -7,11 +7,12 @@ import todos from "../../store/todos";
 const TasksColumn: FC = observer(() => {
     return (
       <div className='tasks-col'>
-        {todos.todos.map(todo => <Task
+        {todos.todos.map((todo, _, array) => <Task
           id={todo.id}
           title={todo.title}
           completed={todo.completed}
           key={todo.id}
+          isLast={todo.id === array.length}
         />)}
       </div>
     )
